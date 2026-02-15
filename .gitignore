@@ -1,0 +1,10 @@
+uploads/
+conversions/
+converted/
+__pycache__/
+*.pyc
+*.pyo
+.env
+*.png
+*.webp
+*.rar

@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+*.pyo
+.env
+uploads/
+conversions/
+converted/
+.git/
+.claude/
+*.png
+*.webp
+*.rar
+NEW CASES/
+Nova pasta/

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Converter</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Image Converter</h1>
+            <p>Batch convert images between formats with drag &amp; drop</p>
+        </header>
+
+        <div class="drop-zone" id="drop-zone">
+            <p>Drop images here or click to browse</p>
+            <span>Supports PNG, JPG, BMP, TIFF, GIF, WebP</span>
+            <input type="file" id="file-input" multiple accept="image/*">
+        </div>
+
+        <div class="progress-bar" id="upload-progress">
+            <div class="fill" id="upload-fill"></div>
+        </div>
+
+        <div class="settings" id="settings" style="display:none;">
+            <div class="setting-group">
+                <label>Output Format</label>
+                <select id="output-format">
+                    <option value="webp" selected>WebP</option>
+                    <option value="png">PNG</option>
+                    <option value="jpeg">JPEG</option>
+                    <option value="bmp">BMP</option>
+                    <option value="tiff">TIFF</option>
+                    <option value="gif">GIF</option>
+                </select>
+            </div>
+            <div class="setting-group">
+                <label>Method</label>
+                <select id="method">
+                    <option value="auto" selected>Auto (smallest)</option>
+                    <option value="lossy">Lossy</option>
+                    <option value="lossless">Lossless</option>
+                </select>
+            </div>
+            <div class="setting-group">
+                <label>Quality <span class="range-value" id="quality-value">90</span></label>
+                <input type="range" id="quality" min="1" max="100" value="90">
+            </div>
+            <div class="setting-group">
+                <label>Threads</label>
+                <input type="number" id="threads" min="1" max="32" value="4">
+            </div>
+            <div class="setting-group">
+                <div class="checkbox-row">
+                    <input type="checkbox" id="resize-toggle">
+                    <label for="resize-toggle" style="margin:0;text-transform:none;font-size:0.9rem;color:var(--text)">Resize images</label>
+                </div>
+                <div class="resize-fields" id="resize-fields" style="display:none;">
+                    <input type="number" id="resize-width" placeholder="Width" value="512" min="1">
+                    <input type="number" id="resize-height" placeholder="Height" value="512" min="1">
+                </div>
+            </div>
+        </div>
+
+        <div class="actions" id="actions" style="display:none;">
+            <button class="btn btn-primary" id="btn-convert">Convert All</button>
+            <button class="btn btn-secondary" id="btn-download-zip" disabled>Download All as ZIP</button>
+        </div>
+
+        <div class="progress-bar" id="convert-progress">
+            <div class="fill" id="convert-fill"></div>
+        </div>
+
+        <div class="stats" id="stats" style="display:none;">
+            <div class="stat-item">
+                <div class="stat-value" id="stat-files">0</div>
+                <div class="stat-label">Files</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="stat-original">0 KB</div>
+                <div class="stat-label">Original</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="stat-converted">0 KB</div>
+                <div class="stat-label">Converted</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="stat-saved">0%</div>
+                <div class="stat-label">Saved</div>
+            </div>
+        </div>
+
+        <div class="file-list" id="file-list"></div>
+
+        <p class="status-msg" id="status-msg"></p>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
